@@ -1,12 +1,18 @@
 name: hm-pipeline
 on: push
 jobs:
-  my-job:
+  code-build:
     runs-on: self-hosted
     steps:
       - name: code-build
         run: echo "Hello World!"
+  docker-build:
+    runs-on: self-hosted
+    steps:
       - name: docker-build
         run: echo "Docker image built completed"
-      - name: ecr-push
-        run: echo "Image pushed into ECR"
+  ecr-push:
+    runs-on: self-hosted
+    steps:
+    - name: ecr-push
+      run: echo "Image pushed into ECR"
