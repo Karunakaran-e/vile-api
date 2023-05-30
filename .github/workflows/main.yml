@@ -6,6 +6,7 @@ jobs:
     steps:
       - name: code-build
         run: |
+          git clone https://github.com/Karunakaran-e/vile-api.git
           echo $(pwd)
           echo "${GITHUB_ACTION_PATH}"
           echo "${GITHUB_WORKSPACE}"
