@@ -7,11 +7,14 @@ jobs:
       - name: code-build
         run: echo "Hello World!"
   docker-build:
-    runs-on: self-hosted
-    steps:
-      - name: docker-build
-        run: echo "Docker image built completed"
+    needs: code-build
+      runs-on: self-hosted
+      steps:
+        - name: docker-build
+          run: echo "Docker image built completed"
   ecr-push:
+    needs: [code-build, docker-build]
+  needs: code-build
     runs-on: self-hosted
     steps:
     - name: ecr-push
