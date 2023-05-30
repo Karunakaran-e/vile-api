@@ -7,9 +7,9 @@ jobs:
       - name: code-build
         run: |
           echo $(pwd)
-          echo GITHUB_ACTION_PATH
-          echo GITHUB_WORKSPACE
-          bash ${GITHUB_WORKSPACE}/build.sh
+          echo "${GITHUB_ACTION_PATH}"
+          echo "${GITHUB_WORKSPACE}"
+          bash "${GITHUB_WORKSPACE}/build.sh"
   docker-build:
     needs: code-build
     runs-on: self-hosted
