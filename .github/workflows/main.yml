@@ -5,13 +5,15 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: code-build
-        run: echo "Hello World!"
+        run: build.sh
   docker-build:
     needs: code-build
     runs-on: self-hosted
     steps:
       - name: docker-build
-        run: echo "Docker image built completed"
+        run: |
+          echo $(pwd)
+          docker build -t vile-api .
   ecr-push:
     needs: [code-build, docker-build]
     runs-on: self-hosted
