@@ -4,10 +4,9 @@ jobs:
   code-build:
     runs-on: self-hosted
     steps:
-      - name: code-build
-        run: |
-          export GIT_SSL_NO_VERIFY=1
-          echo ${{toJson(github)}}
+      - run: export GIT_SSL_NO_VERIFY=1
+      - run: echo ${{toJson(github)}}
+      - run: echo "Last commit SHA $GITHUB_SHA and repo owner name is $GITHUB_REPOSITORY_OWNER"
   docker-build:
     needs: code-build
     runs-on: self-hosted
