@@ -7,14 +7,16 @@ jobs:
       - name: code-build
         run: |
           export GIT_SSL_NO_VERIFY=1
-          echo ${{github.sha}}
+          echo ${{github}}
   docker-build:
     needs: code-build
     runs-on: self-hosted
     steps:
+      - name: checkout-repo
+        uses: actions/checkout@v3
       - name: docker-build
         run: |
-          docker build -t vile-api .
+          ls -lah
   ecr-push:
     needs: [code-build, docker-build]
     runs-on: self-hosted
