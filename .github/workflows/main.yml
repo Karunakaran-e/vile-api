@@ -1,7 +1,20 @@
 name: hm-pipeline
 on: push
 jobs:
+  sonar-scanning:
+    runs-on: self-hosted
+    steps:
+      - run: echo "Sonarqube scanning..."
+  semgrep:
+      runs-on: self-hosted
+      steps:
+      - run: echo "Semgrep scanning..."
+  checkmarx:
+      runs-on: self-hosted
+      steps:
+      - run: echo "Checkmarx scanning..."
   code-build:
+    needs: [sonar-scanning, semgrep, checkmarx]
     runs-on: self-hosted
     steps:
       - run: export GIT_SSL_NO_VERIFY=1
