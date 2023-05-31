@@ -7,13 +7,12 @@ jobs:
       - name: code-build
         run: |
           export GIT_SSL_NO_VERIFY=1
-          echo ${{github}}
+          echo ${{toJson(github)}}
   docker-build:
     needs: code-build
     runs-on: self-hosted
     steps:
-      - name: checkout-repo
-        uses: actions/checkout@v3
+      # - uses: actions/checkout@v3
       - name: docker-build
         run: |
           ls -lah
