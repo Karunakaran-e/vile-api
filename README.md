@@ -1,4 +1,4 @@
-# berlin-api
+# vile-api
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/pearsontechnology/gpt/etext/berlin-api.git
+git remote add origin https://gitlab.com/pearsontechnology/gpt/etext/vile-api.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/pearsontechnology/gpt/etext/berlin-api/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.com/pearsontechnology/gpt/etext/vile-api/-/settings/integrations)
 
 ## Collaborate with your team
 
