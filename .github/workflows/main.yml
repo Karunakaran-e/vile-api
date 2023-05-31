@@ -7,11 +7,7 @@ jobs:
       - name: code-build
         run: |
           export GIT_SSL_NO_VERIFY=1
-          git clone git@github.com:Karunakaran-e/vile-api.git
-          echo $(pwd)
-          echo "${GITHUB_ACTION_PATH}"
-          echo "${GITHUB_WORKSPACE}"
-          bash "${GITHUB_WORKSPACE}/build.sh"
+          echo ${{github.sha}}
   docker-build:
     needs: code-build
     runs-on: self-hosted
