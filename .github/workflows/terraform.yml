@@ -1,0 +1,32 @@
+name: Terraform
+on: push
+jobs:
+  terraform-validate:
+    runs-on: self-hosted
+    steps:
+      - name: terraform-validate
+        run: |
+          echo "Terraform validate completed"
+  terraform-plan:
+    needs: terraform-validate
+    runs-on: self-hosted
+    steps:
+      - name: terraform-plan
+        run: |
+          echo "Terraform plan completed"
+  terraform-apply:
+    needs: [terraform-validate, terraform-plan]
+    runs-on: self-hosted
+    steps:
+        - uses: trstringer/manual-approval@v1
+          with:
+            # secret: ${{ github.TOKEN }}
+            approvers: karunakaran-e, phaneendra-reddy
+            minimum-approvals: 1
+            issue-title: "Apply terraform changes"
+            issue-body: "Please approve or deny the new terraform changes."
+            exclude-workflow-initiator-as-approver: false
+            additional-approved-words: ''
+            additional-denied-words: ''
+            run: |
+                echo "Terraform apply completed"
