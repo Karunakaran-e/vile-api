@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:alpine
 
 RUN apk --no-cache add curl
 RUN curl --version
